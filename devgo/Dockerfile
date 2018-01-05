@@ -1,9 +1,8 @@
-FROM golang:1.5-alpine
-
-RUN echo "PATH=$PATH" > ~/.profile
-
-RUN apk add --update git bash
-
-RUN go get golang.org/x/tools/cmd/goimports
+FROM golang:1.9-alpine
 
 CMD /bin/bash --login
+
+RUN echo "PATH=$PATH" > ~/.profile \
+    && apk add --no-cache git bash \
+    && go get -u golang.org/x/tools/cmd/goimports \
+    && go get -u github.com/golang/dep/cmd/dep

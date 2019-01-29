@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+T=$(getconf DARWIN_USER_TEMP_DIR)
+
+exec docker run -i --rm -v /private/$T:$T ryanbarry/devgo goimports $@
